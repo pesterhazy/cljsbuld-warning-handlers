@@ -36,6 +36,10 @@
                            :output-to "resources/public/js/compiled/asdf.js"
                            :output-dir "resources/public/js/compiled/out"
                            :source-map-timestamp true
+                           :warning-handlers [(fn [warning-type env extra]
+                                                (when-let [s (cljs.analyzer/error-message warning-type extra)]
+                                                  (binding [*out* *err*]
+                                                    (cljs.analyzer/message env s))))]
                            ;; To console.log CLJS data-structures make sure you enable devtools in Chrome
                            ;; https://github.com/binaryage/cljs-devtools
                            :preloads [devtools.preload]}}

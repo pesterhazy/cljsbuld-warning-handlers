@@ -1,5 +1,6 @@
-(ns asdf.core
-    (:require ))
+(ns asdf.core)
+
+(js/console.log invalid2)
 
 (enable-console-print!)
 
